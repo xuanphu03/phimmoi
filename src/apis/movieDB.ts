@@ -10,7 +10,7 @@ interface Props {
 const getMovieList = (type, page = 1) =>
   `${API_URL}/${type}?api_key=${API_KEY}&page=${page}`
 
-export async function fetchTrending({ type, page }: Props) {
+export async function fetchMovie({ type, page }: Props) {
   const res = await fetch(getMovieList(type, page))
   const data = await res.json()
   return data.results
