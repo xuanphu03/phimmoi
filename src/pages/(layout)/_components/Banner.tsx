@@ -1,33 +1,36 @@
-import { fetchImages } from '@/apis/movieDB'
+import { API_IMG, fetchTrending } from '@/apis/movieDB'
 import { Button } from '@/components/Button'
 import { Input } from '@/components/Input'
 import { Search } from 'lucide-react'
 import { useEffect, useState } from 'react'
 
-const data = await fetchImages()
-
 export default function Banner() {
+  const [movie, setMovie] = useState([])
   const [index, setIndex] = useState(0)
   const [isLoading, setIsLoading] = useState(false)
 
   useEffect(() => {
-    if (!isLoading) {
-      const random = Math.floor(Math.random() * 20)
-      setIndex(random)
-      setIsLoading(true)
+    const getMovie = async () => {
+      try {
+        const data = await fetchTrending({ type: 'now_playing', page: 1 })
+        setMovie(data)
+        if (!isLoading) {
+          const random = Math.floor(Math.random() * 20)
+          setIndex(random)
+          setIsLoading(true)
+        }
+      } catch (error) {
+        console.log(error)
+      }
     }
-  }, [isLoading])
-  const urlImage = data[index].backdrop_path
-
-  console.log(index)
+    getMovie()
+  }, [])
+  const urlImage = movie[index]?.backdrop_path
 
   return (
     <section className="relative pt-60 pb-40">
       <div className="absolute top-0 overflow-hidden h-full -z-10">
-        <img
-          src={`https://image.tmdb.org/t/p/original/${urlImage}`}
-          alt="Banner movie"
-        />
+        <img src={`${API_IMG}/${urlImage}`} alt="Banner movie" />
       </div>
       <div className="pl-40 text-white">
         <h1 className="text-5xl font-bold">Welcome.</h1>

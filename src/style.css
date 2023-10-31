@@ -80,3 +80,8 @@
     font-family: 'Kanit', sans-serif;
   }
 }
+
+.swiper-wrapper {
+  display: flex;
+  width: fit-content;
+}
