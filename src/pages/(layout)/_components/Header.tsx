@@ -15,9 +15,11 @@ function Header() {
   return (
     <div className="flex items-center justify-between shadow-md px-10">
       <div className="flex flex-auto">
-        <img src={logo} alt="logo" className="h-20" />
+        <Link to="/">
+          <img src={logo} alt="logo" className="h-20" />
+        </Link>
         <ul className="hidden md:gap-6 md:flex md:items-center">
-          <Link to="/">
+          <Link to="/movies">
             <li className="border border-black px-3 rounded-full">Movies</li>
           </Link>
           <Link to="/search">
