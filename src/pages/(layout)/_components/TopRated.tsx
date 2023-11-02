@@ -8,14 +8,14 @@ export default function Trending() {
 
   useEffect(() => {
     const getPoster = async () => {
-      const data = await fetchMovie({ type: 'now_playing', page: 1 })
+      const data = await fetchMovie({ type: 'top_rated', page: 1 })
       setListMovie(data)
     }
     getPoster()
   }, [])
   return (
     <div className="px-40 mt-10 space-y-5">
-      <h1 className="text-4xl font-bold text-primary">Trending</h1>
+      <h1 className="text-4xl font-bold text-primary">Top rated movies</h1>
       <Swiper
         grabCursor={true}
         spaceBetween={10}

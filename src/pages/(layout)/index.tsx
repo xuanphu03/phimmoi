@@ -1,5 +1,6 @@
 import Banner from './_components/Banner'
 import Popular from './_components/Popular'
+import TopRated from './_components/TopRated'
 import Trending from './_components/Trending'
 
 function Home() {
@@ -8,7 +9,7 @@ function Home() {
       <Banner />
       <Trending />
       <Popular />
-      <p>leaderboard</p>
+      <TopRated />
     </div>
   )
 }

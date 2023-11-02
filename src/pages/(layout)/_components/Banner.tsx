@@ -1,8 +1,9 @@
-import { API_IMG, fetchTrending } from '@/apis/movieDB'
+import { API_IMG, fetchMovie } from '@/apis/movieDB'
 import { Button } from '@/components/Button'
 import { Input } from '@/components/Input'
 import { Search } from 'lucide-react'
 import { useEffect, useState } from 'react'
+import { Link } from 'react-router-dom'
 
 export default function Banner() {
   const [movie, setMovie] = useState([])
@@ -12,7 +13,7 @@ export default function Banner() {
   useEffect(() => {
     const getMovie = async () => {
       try {
-        const data = await fetchTrending({ type: 'now_playing', page: 1 })
+        const data = await fetchMovie({ type: 'now_playing', page: 1 })
         setMovie(data)
         if (!isLoading) {
           const random = Math.floor(Math.random() * 20)
@@ -40,8 +41,10 @@ export default function Banner() {
         <div className="flex w-1/3 pt-5">
           <Input placeholder="What do you want to watch?" />
           <Button>
-            <Search />
-            Search
+            <Link to={'/search'}>
+              <Search />
+              Search
+            </Link>
           </Button>
         </div>
       </div>

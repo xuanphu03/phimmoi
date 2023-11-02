@@ -3,9 +3,13 @@
 
 import { components, hooks, utils } from '@generouted/react-router/client'
 
-export type Path = `/` | `/search`
+export type Path =
+  | `/`
+  | `/search`
 
-export type Params = {}
+export type Params = {
+  '/movies/:id': { id: string }
+}
 
 export type ModalPath = never
 
